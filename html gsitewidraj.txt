@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Themed Name Card</title>
+<style>
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .name-card {
+    border: 2px solid #fff;
+    padding: 20px;
+    width: 300px;
+    background-color: #111;
+    text-align: center;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  .name-card::before, .name-card::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background: linear-gradient(45deg, cyan, magenta, yellow);
+    z-index: -1;
+    filter: blur(10px);
+  }
+  .name-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #fff;
+  }
+  .name-card h2, .name-card h3 {
+    margin: 10px 0;
+  }
+  .rating {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .rating button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 10px;
+    color: #fff;
+  }
+  .rating span {
+    margin-left: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="name-card">
+  <img id="profile-pic" src="https://example.com/default_profile.png" alt="Profile Picture"> <!-- Default image -->
+  <h2 id="name">Your Name</h2>
+  <h3 id="position">Your Position</h3>
+  <div class="rating">
+    <button id="like-btn">👍<span id="like-count">0</span></button>
+    <button id="love-btn">❤️<span id="love-count">0</span></button>
+    <button id="sad-btn">😢<span id="sad-count">0</span></button>
+  </div>
+</div>
+
+<script>
+  let likeCount = 0;
+  let loveCount = 0;
+  let sadCount = 0;
+
+  document.getElementById('like-btn').addEventListener('click', () => {
+    likeCount++;
+    document.getElementById('like-count').textContent = likeCount;
+  });
+
+  document.getElementById('love-btn').addEventListener('click', () => {
+    loveCount++;
+    document.getElementById('love-count').textContent = loveCount;
+  });
+
+  document.getElementById('sad-btn').addEventListener('click', () => {
+    sadCount++;
+    document.getElementById('sad-count').textContent = sadCount;
+  });
+
+  // Function to change profile picture from Google Drive link
+  function updateProfilePicture(link) {
+    document.getElementById('profile-pic').src = link;
+  }
+
+  // Example usage: updateProfilePicture('https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID');
+</script>
+
+</body>
+</html>
